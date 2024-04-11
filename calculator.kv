@@ -6,19 +6,18 @@
     orientation: 'vertical'
     TextInput:
         id: calculator_field
-        height: 100
+        text: "0"
         readonly: True
         disabled: True
         font_size: 30
-        size_hint: (1, None)
+        size_hint: (1, 0.3)
 
     GridLayout:
-        rows: 4
+        rows: 5
         columns: 4
-        padding: 10
-        spacing: 10
-        height: 400
-        size_hint: (1,None)
+        padding: 7
+        spacing: 7
+        size_hint: (1,0.5)
         Button:
             text: "1"
             font_size: 26
@@ -27,14 +26,16 @@
             text: "2"
             font_size: 26
             on_press: root.cal_symbol('2')
+            background_color: (157/255, 157/255,157/255,1)
+
         Button:
             text: "3"
             font_size: 26
             on_press: root.cal_symbol('3')
         Button:
-            text: "+"
+            text: "<-"
             font_size: 26
-            on_press: root.cal_symbol('+')
+            on_press: root.erase()
         Button:
             text: "4"
             font_size: 26
@@ -64,31 +65,25 @@
             font_size: 26
             on_press: root.cal_symbol('9')
         Button:
-            text: "*"
+            text: "X"
             font_size: 26
             on_press: root.cal_symbol('*')
         Button:
-            text: "("
+            text: "+/-"
             font_size: 26
-            on_press: root.cal_symbol('(')
+            on_press: root.postive_negative()
         Button:
             text: "0"
             font_size: 26
             on_press: root.cal_symbol('0')
         Button:
-            text: ")"
+            text: "()"
             font_size: 26
-            on_press: root.cal_symbol(')')
+            on_press: root.brackets()
         Button:
             text: "/"
             font_size: 26
             on_press: root.cal_symbol('/')
-    BoxLayout:
-        orientation:'horizontal'
-        padding: 7
-        spacing: 7
-        height: 100
-        size_hint: (1,None)
         Button:
             text: "."
             font_size: 26
@@ -97,6 +92,10 @@
             text: "C"
             font_size: 26
             on_press: root.clear()
+        Button:
+            text: "+"
+            font_size: 26
+            on_press: root.cal_symbol('+')
         Button:
             text: "="
             font_size: 26
