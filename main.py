@@ -1,5 +1,6 @@
 import kivy
 from kivy.app import App
+from kivy.clock import Clock
 from kivy.uix.boxlayout import BoxLayout
 
 kivy.require('2.3.0')
@@ -27,12 +28,15 @@ class Root(BoxLayout):
             self.calculator_field.text  = str(eval(self.calculator_field.text))
         except ZeroDivisionError:
             self.calculator_field.text = "Undefined"
+            Clock.schedule_once(lambda dt: self.clear(), 3)
+        except SyntaxError:
+            self.calculator_field.text = "Syntax Error"
+            Clock.schedule_once(lambda dt: self.clear(), 3)
 
     def erase(self):
         current_input = self.calculator_field.text
         updated_input = current_input[:-1]
         self.calculator_field.text = updated_input
-
 
     def brackets(self):
         current_input = self.calculator_field.text
@@ -43,7 +47,6 @@ class Root(BoxLayout):
         else:
             updated_input = f"({current_input}"
             self.calculator_field.text = updated_input
-
 
     def positive_negative(self):
         current_input = self.calculator_field.text
