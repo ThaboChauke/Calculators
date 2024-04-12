@@ -37,4 +37,4 @@ After installing Kivy, you can run the app by executing the main.py file:
 
 ## Screenshots
 
-[Insert screenshots of your app here]
+![Screenshot](screenshot/Screenshot.png)
