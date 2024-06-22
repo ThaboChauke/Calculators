@@ -32,6 +32,8 @@ class Root(BoxLayout):
         except SyntaxError:
             self.calculator_field.text = "Syntax Error"
             Clock.schedule_once(lambda dt: self.clear(), 3)
+        except NameError:
+            self.calculator_field.text = "0"
 
     def erase(self):
         current_input = self.calculator_field.text
@@ -41,7 +43,7 @@ class Root(BoxLayout):
     def brackets(self):
         current_input = self.calculator_field.text
 
-        if "(" in current_input:
+        if "(" in current_input:                   
             updated_input = f"{current_input})"
             self.calculator_field.text = updated_input
         else:
