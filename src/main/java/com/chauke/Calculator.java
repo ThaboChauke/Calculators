@@ -17,9 +17,14 @@ public class Calculator implements ActionListener {
     private final Font font = new Font("Ink Free", Font.BOLD,30);
 
     private double num1, num2, result = 0;
-    
-    public Calculator(){
 
+    public Calculator(){
+        frame = new JFrame("Calculator");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(420,550);
+        frame.setLayout(null);
+
+        frame.setVisible(true);
     }
 
     @Override
