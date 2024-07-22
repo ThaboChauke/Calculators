@@ -19,11 +19,17 @@ public class Calculator implements ActionListener {
     private double num1, num2, result = 0;
 
     public Calculator(){
+
         frame = new JFrame("Calculator");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(420,550);
         frame.setLayout(null);
 
+        textField = new JTextField();
+        textField.setBounds(50,25,300,50);
+        textField.setFont(font);
+
+        frame.add(textField);
         frame.setVisible(true);
     }
 
