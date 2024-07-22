@@ -10,14 +10,15 @@ public class Calculator implements ActionListener {
     private JFrame frame;
     private JTextField textField;
     private JButton[] numberButtons = new JButton[10];
-    private JButton[] functionButtons = new JButton[8];
-    private JButton addButton, subButton, multiplyButton, divideButton;
+    private JButton[] functionButtons = new JButton[9];
+    private JButton addButton, subButton, multiplyButton, divideButton, negPosButton;
     private JButton decimalButton, equalButton, deleteButton, clearButton;
     private JPanel panel;
 
     private final Font font = new Font("Ink Free", Font.BOLD,30);
 
     private double num1, num2, result = 0;
+    private char operator;
 
     public Calculator(){
 
@@ -39,6 +40,7 @@ public class Calculator implements ActionListener {
         deleteButton = new JButton("<-");
         equalButton = new JButton("=");
         decimalButton = new JButton(".");
+        negPosButton = new JButton("-/+");
 
         functionButtons[0] = addButton;
         functionButtons[1] = subButton;
@@ -48,8 +50,9 @@ public class Calculator implements ActionListener {
         functionButtons[5] = equalButton;
         functionButtons[6] = deleteButton;
         functionButtons[7] = clearButton;
+        functionButtons[8] = negPosButton;
 
-        for (int i = 0; i < 8; i++) {
+        for (int i = 0; i < 9; i++) {
             functionButtons[i].addActionListener(this);
             functionButtons[i].setFont(font);
             functionButtons[i].setFocusable(false);
@@ -62,8 +65,9 @@ public class Calculator implements ActionListener {
             numberButtons[i].setFocusable(false);
         }
 
-        deleteButton.setBounds(50,430,145,50);
-        clearButton.setBounds(205,430,145,50);
+        negPosButton.setBounds(50,430,100,50);
+        deleteButton.setBounds(150,430,100,50);
+        clearButton.setBounds(250,430,100,50);
 
         panel = new JPanel();
         panel.setBounds(50,100,300,300);
@@ -91,6 +95,7 @@ public class Calculator implements ActionListener {
 
 
         frame.add(panel);
+        frame.add(negPosButton);
         frame.add(deleteButton);
         frame.add(clearButton);
         frame.add(textField);
@@ -99,6 +104,68 @@ public class Calculator implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        for (int i = 0; i < 10; i++) {
+            if (e.getSource() == numberButtons[i]){
+                textField.setText(textField.getText().concat(String.valueOf(i)));
+            }
+        }
+        if (e.getSource() == decimalButton){
+            textField.setText(textField.getText().concat("."));
+        }
+        if (e.getSource() == addButton){
+            num1 = Double.parseDouble(textField.getText());
+            operator = '+';
+            textField.setText("");
+        }
+        if (e.getSource() == subButton){
+            num1 = Double.parseDouble(textField.getText());
+            operator = '-';
+            textField.setText("");
+        }
+        if (e.getSource() == multiplyButton){
+            num1 = Double.parseDouble(textField.getText());
+            operator = '*';
+            textField.setText("");
+        }
+        if (e.getSource() == divideButton){
+            num1 = Double.parseDouble(textField.getText());
+            operator = '/';
+            textField.setText("");
+        }
+        if (e.getSource() == equalButton){
+            num2 = Double.parseDouble(textField.getText());
 
+            switch (operator) {
+                case '+':
+                    result = num1 + num2;
+                    break;
+                case '-':
+                    result = num1 - num2;
+                    break;
+                case '/':
+                    result = num1 / num2;
+                    break;
+                case '*':
+                    result = num1 * num2;
+                    break;
+            }
+            textField.setText(String.valueOf(result));
+            num1 = result;
+        }
+        if (e.getSource() == clearButton) {
+            textField.setText("");
+        }
+        if (e.getSource() == deleteButton) {
+            String string = textField.getText();
+            textField.setText("");
+            for (int i = 0; i < string.length() - 1; i++) {
+                textField.setText(textField.getText() + string.charAt(i));
+            }
+        }
+        if (e.getSource() == negPosButton){
+            double temp = Double.parseDouble(textField.getText());
+            temp*=-1;
+            textField.setText(String.valueOf(temp));
+        }
     }
 }
