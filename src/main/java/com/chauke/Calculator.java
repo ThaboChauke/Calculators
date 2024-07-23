@@ -22,15 +22,17 @@ public class Calculator implements ActionListener {
 
     public Calculator(){
 
-        frame = new JFrame("Calculator");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(420,550);
-        frame.setLayout(null);
+//        frame = new JFrame("Calculator");
+//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        frame.setSize(420,550);
+//        frame.setLayout(null);
+//        frame = configureFrame();
+        configureFrame();
 
-        textField = new JTextField();
-        textField.setBounds(50,25,300,50);
-        textField.setFont(font);
-        textField.setEditable(false);
+//        textField = new JTextField();
+//        textField.setBounds(50,25,300,50);
+//        textField.setFont(font);
+//        textField.setEditable(false);
 
         addButton = new JButton("+");
         subButton = new JButton("-");
@@ -90,9 +92,6 @@ public class Calculator implements ActionListener {
         panel.add(numberButtons[0]);
         panel.add(equalButton);
         panel.add(divideButton);
-
-
-
 
         frame.add(panel);
         frame.add(negPosButton);
@@ -167,5 +166,23 @@ public class Calculator implements ActionListener {
             temp*=-1;
             textField.setText(String.valueOf(temp));
         }
+    }
+
+    private void configureFrame(){
+        frame = new JFrame("Calculator");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(420,550);
+        frame.setLayout(null);
+
+//        return frame;
+    }
+
+    private JTextField configureTextField(){
+        textField = new JTextField();
+        textField.setBounds(50,25,300,50);
+        textField.setFont(font);
+        textField.setEditable(false);
+
+        return textField;
     }
 }
