@@ -14,35 +14,17 @@ Features
     - Negation of values (positive/negative switch)
     - Clear and delete functionalities
 
-Prerequisites
+## Prerequisites
 
     Java Development Kit (JDK) installed
     Any Java IDE (e.g., IntelliJ IDEA, Eclipse) or a text editor and command line
 
-Installation
+## Installation
 
-    Clone the repository:
+  - Clone the repository:
 
-    sh
+          git clone https://github.co/ThaboChauke/calculator.git
 
-git clone https://github.com/your-username/calculator.git
+  - Navigate to the project directory:
 
-Navigate to the project directory:
-
-sh
-
-    cd calculator
-
-Usage
-
-    Compile the Java files:
-
-    sh
-
-javac com/chauke/Calculator.java
-
-Run the application:
-
-sh
-
-java com.chauke.Calculator
+      cd calculator
