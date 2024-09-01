@@ -88,7 +88,7 @@ public class Calculator implements ActionListener {
                     result = num1 * num2;
                     break;
             }
-            textField.setText(String.valueOf(result));
+            textField.setText(String.valueOf((int) result));
             num1 = result;
         }
         if (e.getSource() == clearButton) {
@@ -102,9 +102,11 @@ public class Calculator implements ActionListener {
             }
         }
         if (e.getSource() == negPosButton){
+            if (!textField.getText().isEmpty()){
             double temp = Double.parseDouble(textField.getText());
             temp*=-1;
-            textField.setText(String.valueOf(temp));
+            textField.setText(String.valueOf((int)temp));
+        }
         }
     }
 
@@ -118,7 +120,7 @@ public class Calculator implements ActionListener {
     }
 
     private JTextField configureTextField(){
-        textField = new JTextField();
+       JTextField textField = new JTextField();
         textField.setBounds(50,25,300,50);
         textField.setFont(font);
         textField.setEditable(false);
@@ -168,7 +170,7 @@ public class Calculator implements ActionListener {
     }
 
     private JPanel configurePanel(){
-        panel = new JPanel();
+       JPanel panel = new JPanel();
         panel.setBounds(50,100,300,300);
         panel.setLayout(new GridLayout(4,4,10,10));
 
