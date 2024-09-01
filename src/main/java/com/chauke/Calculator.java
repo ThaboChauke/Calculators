@@ -43,7 +43,9 @@ public class Calculator implements ActionListener {
             }
         }
         if (e.getSource() == decimalButton){
+            if (!textField.getText().contains(".")){
             textField.setText(textField.getText().concat("."));
+        }
         }
         if (e.getSource() == addButton){
             num1 = Double.parseDouble(textField.getText());
@@ -76,6 +78,10 @@ public class Calculator implements ActionListener {
                     result = num1 - num2;
                     break;
                 case '/':
+                    if (num2 == 0){
+                        textField.setText("Error");
+                        return;
+                    }
                     result = num1 / num2;
                     break;
                 case '*':
