@@ -7,25 +7,21 @@ document.getElementById("num1-el").textContent = num1
 document.getElementById("num2-el").textContent = num2
 
 function add() {
-    sum.textContent = "Sum: "
     result = num1 + num2
-    sum.textContent += result
+    sum.textContent = "Sum: " + result
 }
 
 function subtract() {
-    sum.textContent = "Sum: "
     result = num1 - num2
-    sum.textContent += result
+    sum.textContent = "Sum: " + result
 }
 
 function multiply() {
-    sum.textContent = "Sum: "
     result = num1 * num2
-    sum.textContent += result
+    sum.textContent = "Sum: " + result
 }
 
 function divide() {
-    sum.textContent = "Sum: "
     result = num1 / num2
-    sum.textContent += result
+    sum.textContent = "Sum: " + result
 }
