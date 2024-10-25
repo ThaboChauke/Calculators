@@ -79,7 +79,7 @@ public class Calculator implements ActionListener {
                     break;
                 case '/':
                     if (num2 == 0){
-                        textField.setText("Error");
+                        textField.setText("Undefined");
                         return;
                     }
                     result = num1 / num2;
